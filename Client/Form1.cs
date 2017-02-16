@@ -22,11 +22,6 @@ namespace Client
 
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try

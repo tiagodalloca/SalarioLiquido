@@ -79,7 +79,6 @@
             this.txtCPF.Size = new System.Drawing.Size(211, 29);
             this.txtCPF.TabIndex = 3;
             this.txtCPF.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.txtCPF.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // txtDependentes
             // 
