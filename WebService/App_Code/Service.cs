@@ -11,15 +11,15 @@ using System.Web.Services;
 
 public class Service : System.Web.Services.WebService
 {
-    public Service () {
+    public Service() {
 
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
 
     [WebMethod]
-    public string HelloWorld() {
-        return "Hello World";
+    public bool isCPFValido(string cpf){
+        return true;
     }
-    
+
 }
