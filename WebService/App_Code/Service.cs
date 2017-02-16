@@ -54,4 +54,20 @@ public class Service : System.Web.Services.WebService
         }
     }
 
+    [WebMethod]
+    public decimal calcularIR(decimal salario) {
+        return salario;
+    }
+
+    [WebMethod]
+    public decimal calcularFGTS(decimal salario)
+    {
+        return salario;
+    }
+
+    [WebMethod]
+    public decimal calcularINSS(decimal salario)
+    {
+        return salario;
+    }
 }
