@@ -55,19 +55,33 @@ public class Service : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public decimal calcularIR(decimal salario) {
-        return salario;
+    public double calcularIR(double salario) {
+        if (1903.98 >= salario)
+            return 0;
+        if (2826.65 >= salario)
+            return salario * 0.075;
+        if (3751.05 >= salario)
+            return salario * 0.15;
+        if (4664.68 >= salario)
+            return salario * 22.5;
+
+        return salario * 0.275;
     }
 
     [WebMethod]
-    public decimal calcularFGTS(decimal salario)
+    public double calcularFGTS(double salario)
     {
-        return salario;
+        return salario * 0.08;
     }
 
     [WebMethod]
-    public decimal calcularINSS(decimal salario)
+    public double calcularINSS(double salario)
     {
-        return salario;
+        if (1659.38 >= salario)
+            return salario * 0.08;
+        if (2765.66 >= salario)
+            return salario * 0.09;
+
+        return salario * 0.11;
     }
 }
