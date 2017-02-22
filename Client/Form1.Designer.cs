@@ -140,6 +140,7 @@
             this.btnFecharRelatorio.TabIndex = 9;
             this.btnFecharRelatorio.Text = "Fechar Relatório";
             this.btnFecharRelatorio.UseVisualStyleBackColor = true;
+            this.btnFecharRelatorio.Click += new System.EventHandler(this.btnFecharRelatorio_Click);
             // 
             // Form1
             // 

@@ -19,24 +19,38 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lsbResult.Items.Add("Salário Bruto: R$" + txtSalario.Text);
-            lsbResult.Items.Add("INSS: R$" + wsHollerit.calcularINSS(Convert.ToDouble(txtSalario.Text)));
-            lsbResult.Items.Add("IR: R$" + wsHollerit.calcularIR(Convert.ToDouble(txtSalario.Text)));
-            lsbResult.Items.Add("FGTS: R$" + wsHollerit.calcularFGTS(Convert.ToDouble(txtSalario.Text)));
-            double salarioLiq = Convert.ToDouble(txtSalario.Text);
-            salarioLiq -= wsHollerit.calcularINSS(Convert.ToDouble(txtSalario.Text)) + wsHollerit.calcularIR(Convert.ToDouble(txtSalario.Text))
-                        + wsHollerit.calcularFGTS(Convert.ToDouble(txtSalario.Text));
-            lsbResult.Items.Add("Salário Líquido: R$" + Convert.ToString(salarioLiq));
+            if (wsHollerit.isCPFValido(txtCPF.Text))
+            {
+                var salario = Convert.ToDouble(txtSalario.Text);
+                var salariob = salario;
+
+                lsbResult.Items.Add("Salário Bruto: R$" + txtSalario.Text);
+
+                var inss = wsHollerit.calcularINSS(salario);
+                salario -= inss;
+
+                lsbResult.Items.Add("INSS: R$" + inss);
+
+                var ir = wsHollerit.calcularIR(salario);
+                salario -= ir;
+
+                lsbResult.Items.Add("IR: R$" + ir);
+                lsbResult.Items.Add("FGTS: R$" + wsHollerit.calcularFGTS(salariob));
+                lsbResult.Items.Add("Salário Líquido: R$" + salario);
+            }
+            else
+                MessageBox.Show("O CPF não está correto :(");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                Convert.ToInt16(txtCPF.Text);
+                Convert.ToUInt64(txtCPF.Text);
             }
             catch
             {
+                if (txtCPF.Text != "")
                 MessageBox.Show("Aviso", "Só é permitido o uso de caracteres numéricos no CPF");
             }    
 
@@ -64,6 +78,11 @@ namespace Client
             {
                 MessageBox.Show("Aviso", "Só é permitido o uso de caracteres numéricos no salário");
             }
+        }
+
+        private void btnFecharRelatorio_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
