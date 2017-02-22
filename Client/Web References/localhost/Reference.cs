@@ -23,13 +23,19 @@ namespace Client.localhost {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="ServiceSoap", Namespace="http://tempuri.org/")]
     public partial class Service : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback isCPFValidoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback calcularIROperationCompleted;
+        
+        private System.Threading.SendOrPostCallback calcularFGTSOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback calcularINSSOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -73,6 +79,15 @@ namespace Client.localhost {
         public event isCPFValidoCompletedEventHandler isCPFValidoCompleted;
         
         /// <remarks/>
+        public event calcularIRCompletedEventHandler calcularIRCompleted;
+        
+        /// <remarks/>
+        public event calcularFGTSCompletedEventHandler calcularFGTSCompleted;
+        
+        /// <remarks/>
+        public event calcularINSSCompletedEventHandler calcularINSSCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/isCPFValido", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool isCPFValido(string cpf) {
             object[] results = this.Invoke("isCPFValido", new object[] {
@@ -102,6 +117,93 @@ namespace Client.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/calcularIR", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double calcularIR(double salario) {
+            object[] results = this.Invoke("calcularIR", new object[] {
+                        salario});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void calcularIRAsync(double salario) {
+            this.calcularIRAsync(salario, null);
+        }
+        
+        /// <remarks/>
+        public void calcularIRAsync(double salario, object userState) {
+            if ((this.calcularIROperationCompleted == null)) {
+                this.calcularIROperationCompleted = new System.Threading.SendOrPostCallback(this.OncalcularIROperationCompleted);
+            }
+            this.InvokeAsync("calcularIR", new object[] {
+                        salario}, this.calcularIROperationCompleted, userState);
+        }
+        
+        private void OncalcularIROperationCompleted(object arg) {
+            if ((this.calcularIRCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.calcularIRCompleted(this, new calcularIRCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/calcularFGTS", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double calcularFGTS(double salario) {
+            object[] results = this.Invoke("calcularFGTS", new object[] {
+                        salario});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void calcularFGTSAsync(double salario) {
+            this.calcularFGTSAsync(salario, null);
+        }
+        
+        /// <remarks/>
+        public void calcularFGTSAsync(double salario, object userState) {
+            if ((this.calcularFGTSOperationCompleted == null)) {
+                this.calcularFGTSOperationCompleted = new System.Threading.SendOrPostCallback(this.OncalcularFGTSOperationCompleted);
+            }
+            this.InvokeAsync("calcularFGTS", new object[] {
+                        salario}, this.calcularFGTSOperationCompleted, userState);
+        }
+        
+        private void OncalcularFGTSOperationCompleted(object arg) {
+            if ((this.calcularFGTSCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.calcularFGTSCompleted(this, new calcularFGTSCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/calcularINSS", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double calcularINSS(double salario) {
+            object[] results = this.Invoke("calcularINSS", new object[] {
+                        salario});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void calcularINSSAsync(double salario) {
+            this.calcularINSSAsync(salario, null);
+        }
+        
+        /// <remarks/>
+        public void calcularINSSAsync(double salario, object userState) {
+            if ((this.calcularINSSOperationCompleted == null)) {
+                this.calcularINSSOperationCompleted = new System.Threading.SendOrPostCallback(this.OncalcularINSSOperationCompleted);
+            }
+            this.InvokeAsync("calcularINSS", new object[] {
+                        salario}, this.calcularINSSOperationCompleted, userState);
+        }
+        
+        private void OncalcularINSSOperationCompleted(object arg) {
+            if ((this.calcularINSSCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.calcularINSSCompleted(this, new calcularINSSCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -121,11 +223,11 @@ namespace Client.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
     public delegate void isCPFValidoCompletedEventHandler(object sender, isCPFValidoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class isCPFValidoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -142,6 +244,84 @@ namespace Client.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    public delegate void calcularIRCompletedEventHandler(object sender, calcularIRCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class calcularIRCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal calcularIRCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    public delegate void calcularFGTSCompletedEventHandler(object sender, calcularFGTSCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class calcularFGTSCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal calcularFGTSCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    public delegate void calcularINSSCompletedEventHandler(object sender, calcularINSSCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class calcularINSSCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal calcularINSSCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
             }
         }
     }

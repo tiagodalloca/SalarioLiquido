@@ -19,7 +19,14 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            lsbResult.Items.Add("Salário Bruto: R$" + txtSalario.Text);
+            lsbResult.Items.Add("INSS: R$" + wsHollerit.calcularINSS(Convert.ToDouble(txtSalario.Text)));
+            lsbResult.Items.Add("IR: R$" + wsHollerit.calcularIR(Convert.ToDouble(txtSalario.Text)));
+            lsbResult.Items.Add("FGTS: R$" + wsHollerit.calcularFGTS(Convert.ToDouble(txtSalario.Text)));
+            double salarioLiq = Convert.ToDouble(txtSalario.Text);
+            salarioLiq -= wsHollerit.calcularINSS(Convert.ToDouble(txtSalario.Text)) + wsHollerit.calcularIR(Convert.ToDouble(txtSalario.Text))
+                        + wsHollerit.calcularFGTS(Convert.ToDouble(txtSalario.Text));
+            lsbResult.Items.Add("Salário Líquido: R$" + Convert.ToString(salarioLiq));
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

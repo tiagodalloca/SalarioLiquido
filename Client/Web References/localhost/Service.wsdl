@@ -16,6 +16,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="calcularIR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="salario" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularIRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="calcularIRResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularFGTS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="salario" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularFGTSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="calcularFGTSResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularINSS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="salario" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcularINSSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="calcularINSSResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="isCPFValidoSoapIn">
@@ -24,10 +66,40 @@
   <wsdl:message name="isCPFValidoSoapOut">
     <wsdl:part name="parameters" element="tns:isCPFValidoResponse" />
   </wsdl:message>
+  <wsdl:message name="calcularIRSoapIn">
+    <wsdl:part name="parameters" element="tns:calcularIR" />
+  </wsdl:message>
+  <wsdl:message name="calcularIRSoapOut">
+    <wsdl:part name="parameters" element="tns:calcularIRResponse" />
+  </wsdl:message>
+  <wsdl:message name="calcularFGTSSoapIn">
+    <wsdl:part name="parameters" element="tns:calcularFGTS" />
+  </wsdl:message>
+  <wsdl:message name="calcularFGTSSoapOut">
+    <wsdl:part name="parameters" element="tns:calcularFGTSResponse" />
+  </wsdl:message>
+  <wsdl:message name="calcularINSSSoapIn">
+    <wsdl:part name="parameters" element="tns:calcularINSS" />
+  </wsdl:message>
+  <wsdl:message name="calcularINSSSoapOut">
+    <wsdl:part name="parameters" element="tns:calcularINSSResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="isCPFValido">
       <wsdl:input message="tns:isCPFValidoSoapIn" />
       <wsdl:output message="tns:isCPFValidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcularIR">
+      <wsdl:input message="tns:calcularIRSoapIn" />
+      <wsdl:output message="tns:calcularIRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcularFGTS">
+      <wsdl:input message="tns:calcularFGTSSoapIn" />
+      <wsdl:output message="tns:calcularFGTSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcularINSS">
+      <wsdl:input message="tns:calcularINSSSoapIn" />
+      <wsdl:output message="tns:calcularINSSSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
@@ -41,11 +113,65 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="calcularIR">
+      <soap:operation soapAction="http://tempuri.org/calcularIR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularFGTS">
+      <soap:operation soapAction="http://tempuri.org/calcularFGTS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularINSS">
+      <soap:operation soapAction="http://tempuri.org/calcularINSS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="isCPFValido">
       <soap12:operation soapAction="http://tempuri.org/isCPFValido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularIR">
+      <soap12:operation soapAction="http://tempuri.org/calcularIR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularFGTS">
+      <soap12:operation soapAction="http://tempuri.org/calcularFGTS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcularINSS">
+      <soap12:operation soapAction="http://tempuri.org/calcularINSS" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
