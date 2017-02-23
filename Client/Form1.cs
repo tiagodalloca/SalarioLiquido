@@ -87,11 +87,11 @@ namespace Client
         {
             try
             {
-                Convert.ToUInt16(txtSalario.Text);
+                Convert.ToUInt32(txtSalario.Text);
             }
             catch
             {
-                MessageBox.Show("Só é permitido o uso de caracteres numéricos no salário", "Aviso");
+                MessageBox.Show("Só é permitido o uso de caracteres numéricos no salário e menores que 2^32 - 1", "Aviso");
                 txtSalario.Text = "";
             }
         }
