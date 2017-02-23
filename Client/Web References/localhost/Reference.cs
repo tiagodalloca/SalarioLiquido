@@ -118,24 +118,26 @@ namespace Client.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/calcularIR", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public double calcularIR(double salario) {
+        public double calcularIR(double salario, short dependentes) {
             object[] results = this.Invoke("calcularIR", new object[] {
-                        salario});
+                        salario,
+                        dependentes});
             return ((double)(results[0]));
         }
         
         /// <remarks/>
-        public void calcularIRAsync(double salario) {
-            this.calcularIRAsync(salario, null);
+        public void calcularIRAsync(double salario, short dependentes) {
+            this.calcularIRAsync(salario, dependentes, null);
         }
         
         /// <remarks/>
-        public void calcularIRAsync(double salario, object userState) {
+        public void calcularIRAsync(double salario, short dependentes, object userState) {
             if ((this.calcularIROperationCompleted == null)) {
                 this.calcularIROperationCompleted = new System.Threading.SendOrPostCallback(this.OncalcularIROperationCompleted);
             }
             this.InvokeAsync("calcularIR", new object[] {
-                        salario}, this.calcularIROperationCompleted, userState);
+                        salario,
+                        dependentes}, this.calcularIROperationCompleted, userState);
         }
         
         private void OncalcularIROperationCompleted(object arg) {

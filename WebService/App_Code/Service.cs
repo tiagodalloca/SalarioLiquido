@@ -55,17 +55,23 @@ public class Service : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public double calcularIR(double salario) {
+    public double calcularIR(double salario, short dependentes) {
+
+        double ret;
+
         if (1903.98 >= salario)
             return 0;
-        if (2826.65 >= salario)
-            return salario * 0.075;
-        if (3751.05 >= salario)
-            return salario * 0.15;
-        if (4664.68 >= salario)
-            return salario * 22.5;
+        else if (2826.65 >= salario)
+            ret = salario * 0.075;
+        else if (3751.05 >= salario)
+            ret = salario * 0.15;
+        else if (4664.68 >= salario)
+            ret = salario * 22.5;
 
-        return salario * 0.275;
+        else
+            ret = salario * 0.275;
+
+        return ret -= 189.59 * dependentes;
     }
 
     [WebMethod]

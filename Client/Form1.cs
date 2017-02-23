@@ -19,8 +19,14 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (wsHollerit.isCPFValido(txtCPF.Text))
+            if (txtCPF.Text.Length < 11 || txtDependentes.Text == "" || txtSalario.Text == "")
+                MessageBox.Show("Preencha todos os campos", "Aviso");
+
+
+            else if (wsHollerit.isCPFValido(txtCPF.Text))
             {
+                lsbResult.Items.Clear();
+
                 var salario = Convert.ToDouble(txtSalario.Text);
                 var salariob = salario;
 
@@ -31,7 +37,11 @@ namespace Client
 
                 lsbResult.Items.Add("INSS: R$" + inss);
 
-                var ir = wsHollerit.calcularIR(salario);
+                var ir = wsHollerit.calcularIR(salario, Convert.ToInt16(txtDependentes.Text));
+
+                if (ir < 0)
+                    ir = 0;
+
                 salario -= ir;
 
                 lsbResult.Items.Add("IR: R$" + ir);
@@ -51,7 +61,8 @@ namespace Client
             catch
             {
                 if (txtCPF.Text != "")
-                MessageBox.Show("Aviso", "Só é permitido o uso de caracteres numéricos no CPF");
+                MessageBox.Show("Só é permitido o uso de caracteres numéricos no CPF", "Aviso");
+                txtCPF.Text = "";
             }    
 
         }
@@ -64,7 +75,11 @@ namespace Client
             }
             catch
             {
-                MessageBox.Show("Aviso", "Só é permitido o uso de caracteres numéricos no NÚMERO de dependentes");
+                if (txtDependentes.Text != "")
+                {
+                    MessageBox.Show("Só é permitido o uso de caracteres numéricos no NÚMERO de dependentes", "Aviso");
+                    txtDependentes.Text = "";
+                }
             }
         }
 
@@ -72,17 +87,18 @@ namespace Client
         {
             try
             {
-                Convert.ToInt16(txtSalario.Text);
+                Convert.ToUInt16(txtSalario.Text);
             }
             catch
             {
-                MessageBox.Show("Aviso", "Só é permitido o uso de caracteres numéricos no salário");
+                MessageBox.Show("Só é permitido o uso de caracteres numéricos no salário", "Aviso");
+                txtSalario.Text = "";
             }
         }
 
         private void btnFecharRelatorio_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

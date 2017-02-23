@@ -20,6 +20,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="salario" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dependentes" type="s:short" />
           </s:sequence>
         </s:complexType>
       </s:element>
